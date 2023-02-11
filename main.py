@@ -25,6 +25,7 @@ def download_txt(url, filename, folder='books/'):
 
 
 def download_images(image_url, filename, folder='images/'):
+    os.makedirs('./images', exist_ok=True)
     response = requests.get(image_url)
     response.raise_for_status()
 
@@ -32,7 +33,22 @@ def download_images(image_url, filename, folder='images/'):
     full_path = os.path.join(folder, filename) 
     with open(full_path, 'wb') as file:
         file.write(response.content)
-     
+
+
+def download_comments(url, filename, folder='comments/'):
+    os.makedirs('./comments', exist_ok=True)
+    response = requests.get(url)
+    response.raise_for_status()
+
+    soup = BeautifulSoup(response.content, 'lxml')
+    filename = sanitize_filename(filename)
+    full_path = os.path.join(folder, filename)
+    book_comments = soup.findAll(class_='texts')
+    book_comments_texts = [comment.find(class_='black').text for comment in book_comments]
+    if book_comments_texts:
+        with open(full_path, 'w') as file:
+            [file.write(f'{text}\n') for text in book_comments_texts]
+
 
 def parse_book_page(response):
     soup = BeautifulSoup(response.text, 'lxml')
@@ -49,17 +65,11 @@ def parse_book_page(response):
     image_src = soup.find(class_='bookimage').find('img')['src']
     image_url = urljoin(response.url, image_src)
 
-    book_comments = soup.findAll(class_='texts')
-    book_comments_texts = [
-        comment.find(class_='black').text for comment in book_comments
-    ]
-
     book_content = {
         'title': title,
         'author': author,
         'genres': genres_text,
         'image_url': image_url,
-        'comments': book_comments_texts,
     }
     return book_content
 
@@ -72,8 +82,7 @@ def main():
     parser.add_argument('end_id', nargs='?', default=10, type=int)
     args = parser.parse_args()
 
-    os.makedirs('./books', exist_ok=True)
-    os.makedirs('./images', exist_ok=True)
+    os.makedirs('./books', exist_ok=True)  
 
     for book_id in range(args.start_id, args.end_id + 1):
         url_book = f'https://tululu.org/b{book_id}/'
@@ -85,13 +94,14 @@ def main():
             continue
         
         book_content = parse_book_page(response)
+        book_filename = f'{book_id}. {book_content["title"]}.txt'
 
         book_image_url = book_content['image_url']
         book_image_name = urlsplit(book_image_url).path.split('/')[-1]
         download_images(book_content['image_url'], book_image_name)
+        download_comments(url_book, book_filename)
 
         url_book_download = f'http://tululu.org/txt.php?id={book_id}'
-        book_filename = f'{book_id}. {book_content["title"]}.txt'
         try:
             download_txt(url_book_download, book_filename)
         except HTTPError:
