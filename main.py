@@ -23,8 +23,8 @@ def download_txt(url, filename, folder='books/'):
         file.write(response.content)
 
 
-def download_images(url, filename, folder='images/'):
-    response = requests.get(url)
+def download_images(image_url, filename, folder='images/'):
+    response = requests.get(image_url)
     response.raise_for_status()
 
     filename = sanitize_filename(filename)
@@ -33,9 +33,20 @@ def download_images(url, filename, folder='images/'):
         file.write(response.content)
 
 
+def download_comments(soup, filename, folder='comments/'):
+    filename = sanitize_filename(filename)
+    full_path = os.path.join(folder, filename)
+    book_comments = soup.findAll(class_='texts')
+    book_comments_texts = [comment.find(class_='black').text for comment in book_comments]
+    if book_comments_texts:
+        with open(full_path, 'w') as file:
+            [file.write(f'{text}\n') for text in book_comments_texts]      
+
+
 def main():
     os.makedirs('./books', exist_ok=True)
     os.makedirs('./images', exist_ok=True)
+    os.makedirs('./comments', exist_ok=True)
     sep = ' \xa0 :: \xa0 '
 
     for book_id in range(1, 11):
@@ -61,8 +72,10 @@ def main():
         book_image_src = soup.find(class_='bookimage').find('img')['src']
         book_image_url = urljoin(url_book, book_image_src)
         image_filename = book_image_src.split('/')[-1]
+        
         download_images(book_image_url, image_filename)
-
+        download_comments(soup, book_filename)
+        
 
 if __name__ == '__main__':
     main()
