@@ -1,3 +1,4 @@
+import argparse
 import os
 import requests
 
@@ -64,10 +65,17 @@ def parse_book_page(response):
 
 
 def main():
+    parser = argparse.ArgumentParser(
+        description='Скачивание книг по начальному и конечному id'
+    )
+    parser.add_argument('start_id', nargs='?', default=1, type=int)
+    parser.add_argument('end_id', nargs='?', default=10, type=int)
+    args = parser.parse_args()
+
     os.makedirs('./books', exist_ok=True)
     os.makedirs('./images', exist_ok=True)
 
-    for book_id in range(1, 11):
+    for book_id in range(args.start_id, args.end_id + 1):
         url_book = f'https://tululu.org/b{book_id}/'
         try:
             response = requests.get(url_book)
@@ -78,16 +86,16 @@ def main():
         
         book_content = parse_book_page(response)
 
-        url_book_content = f'http://tululu.org/txt.php?id={book_id}'
-        book_filename = f'{book_id}. {book_content["title"]}.txt'
-        try:
-            download_txt(url_book_content, book_filename)
-        except HTTPError:
-            continue
-
         book_image_url = book_content['image_url']
         book_image_name = urlsplit(book_image_url).path.split('/')[-1]
         download_images(book_content['image_url'], book_image_name)
+
+        url_book_download = f'http://tululu.org/txt.php?id={book_id}'
+        book_filename = f'{book_id}. {book_content["title"]}.txt'
+        try:
+            download_txt(url_book_download, book_filename)
+        except HTTPError:
+            continue
 
 if __name__ == '__main__':
     main()
