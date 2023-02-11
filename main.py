@@ -63,19 +63,22 @@ def main():
         book_title = book_title_text.split(sep)[0].strip()
         book_filename = f'{book_id}. {book_title}.txt'
 
-        url_book_content = f'http://tululu.org/txt.php?id={book_id}'
-        try:
-            download_txt(url_book_content, book_filename)
-        except HTTPError:
-            continue
+        # url_book_content = f'http://tululu.org/txt.php?id={book_id}'
+        # try:
+        #     # download_txt(url_book_content, book_filename)
+        # except HTTPError:
+        #     continue
     
-        book_image_src = soup.find(class_='bookimage').find('img')['src']
-        book_image_url = urljoin(url_book, book_image_src)
-        image_filename = book_image_src.split('/')[-1]
+        # book_image_src = soup.find(class_='bookimage').find('img')['src']
+        # book_image_url = urljoin(url_book, book_image_src)
+        # image_filename = book_image_src.split('/')[-1]
         
-        download_images(book_image_url, image_filename)
-        download_comments(soup, book_filename)
-        
+        # download_images(book_image_url, image_filename)
+        # download_comments(soup, book_filename)
+        genres = soup.find('span', class_='d_book').findAll('a')
+        print(book_title)
+        print([genre.text for genre in genres])
+        print()
 
 if __name__ == '__main__':
     main()
