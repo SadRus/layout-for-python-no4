@@ -8,19 +8,14 @@ from urllib.parse import urljoin
 
 
 def check_for_redirect(response):
-    if response.history:
-        raise requests.HTTPError()
-
-
-def check_redirect_for_download(response):
-    if len(response.history) > 1:
+    if response.url == 'https://tululu.org/':
         raise requests.HTTPError()
 
 
 def download_txt(url, filename, folder='books/'):
     response = requests.get(url)
     response.raise_for_status()
-    check_redirect_for_download(response)
+    check_for_redirect(response)
 
     filename = sanitize_filename(filename)
     full_path = os.path.join(folder, filename) 
@@ -51,6 +46,7 @@ def main():
             check_for_redirect(response)
         except HTTPError:
             continue
+
         soup = BeautifulSoup(response.text, 'lxml')
         book_title_text = soup.find('h1').text
         book_title = book_title_text.split(sep)[0].strip()
