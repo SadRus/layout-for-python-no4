@@ -103,6 +103,7 @@ def main():
         except ConnectionError as error:
             print(f"ConnectionError: can't connect to \
                   the book id={book_id} page")
+            time.sleep(5)
             continue
 
         book_content = parse_book_page(response)
@@ -122,6 +123,7 @@ def main():
         except ConnectionError as error:
             print(f"ConnectionError: can't connect to \
                   the book id={book_id} image url")
+            time.sleep(5)
             continue
 
         book_download_url = 'http://tululu.org/txt.php'
@@ -133,6 +135,7 @@ def main():
         except ConnectionError as error:
             print(f"ConnectionError: can't connect to \
                   download the book id={book_id}")
+            time.sleep(5)
             continue
 
 if __name__ == '__main__':
