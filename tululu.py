@@ -23,7 +23,7 @@ def download_txt(url, payload, filename, folder='books/'):
     filename = sanitize_filename(filename)
     full_path = os.path.join(folder, filename) 
     with open(full_path, 'wb') as file:
-        file.write(response.content)
+        file.write(response.text)
 
 
 def download_image(image_url, image_filename, folder='images/'):
