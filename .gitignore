@@ -2,6 +2,8 @@ books/
 images/
 comments/
 test.py
+books.json
+parse_tululu_category.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
