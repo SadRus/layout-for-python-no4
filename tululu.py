@@ -51,16 +51,14 @@ def download_comments(comments, filename):
 
 def parse_book_page(response):
     soup = BeautifulSoup(response.text, 'lxml')
-    title_tag = soup.find('h1')
+    title_tag = soup.select_one('h1')
     title, author = title_tag.text.split(' \xa0 :: \xa0 ')
     title, author = title.strip(), author.strip()
-    img_src = soup.find(class_='bookimage').find('img')['src']
+    img_src = soup.select_one('.bookimage img')['src']
     book_path = urljoin('books/', f'{title}.txt')
-    book_comments = soup.findAll(class_='texts')
-    book_comments_text = [
-        comment.find(class_='black').text for comment in book_comments
-    ]
-    genres = soup.find('span', class_='d_book').findAll('a')
+    book_comments = soup.select('.texts .black text')
+    book_comments_text = [comment.text for comment in book_comments]
+    genres = soup.select('.ow_px_td span.d_book a')
     genres_text = [genre.text for genre in genres]
     book_content = {
         'title': title,
@@ -87,7 +85,7 @@ def main():
     parser.add_argument(
         'end_id',
         nargs='?',
-        default=4,
+        default=1,
         type=int,
         help='end_id (default: 10)',
     )
@@ -101,9 +99,9 @@ def main():
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'lxml')
 
-        books = soup.find(class_='ow_px_td').find_all('table')
+        books = soup.select('.ow_px_td table')
         for book in books:
-            book_id  = book.find('a')['href'][2:-1]
+            book_id = book.select_one('a')['href'][2:-1]
             payload = {'id': book_id}
             book_url = f'https://tululu.org/b{book_id}/'
             try:
