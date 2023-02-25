@@ -39,15 +39,6 @@ def download_image(image_url, image_filename, dest_folder = './'):
         file.write(response.content)
 
 
-def download_comments(comments, filename, dest_folder = './'):
-    folder = os.path.join(dest_folder, 'comments/')
-    os.makedirs(folder, exist_ok=True)
-    filename = sanitize_filename(filename)
-    full_path = os.path.join(folder, filename)
-    with open(full_path, 'w') as file:
-        [file.write(f'{text}\n') for text in comments]
-
-
 def parse_book_page(response):
     soup = BeautifulSoup(response.text, 'lxml')
     title_tag = soup.select_one('h1')
@@ -162,12 +153,6 @@ def main():
             book_filename = f'{book_id}. {book_content["title"]}.txt'
             books_jsons.append(book_content)
 
-            if book_content['comments']:
-                download_comments(
-                    book_content['comments'],
-                    book_filename,
-                    dest_folder=args.dest_folder
-                ) 
             book_img_src = book_content['img_src']
             book_image_url = urljoin(response.url, book_img_src)
             book_image_name = urlsplit(book_image_url).path.split('/')[-1]
