@@ -15,8 +15,8 @@ def check_for_redirect(response):
         raise requests.HTTPError()
 
 
-def download_txt(url, payload, filename):
-    folder='books/'
+def download_txt(url, payload, filename, dest_folder = './'):
+    folder = os.path.join(dest_folder, 'books/')
     os.makedirs(folder, exist_ok=True)
     response = requests.get(url, params=payload)
     response.raise_for_status()
@@ -27,8 +27,8 @@ def download_txt(url, payload, filename):
         file.write(response.content)
 
 
-def download_image(image_url, image_filename):
-    folder = 'images/'
+def download_image(image_url, image_filename, dest_folder = './'):
+    folder = os.path.join(dest_folder, 'images/')
     os.makedirs(folder, exist_ok=True)
     response = requests.get(image_url)
     response.raise_for_status()
@@ -39,8 +39,8 @@ def download_image(image_url, image_filename):
         file.write(response.content)
 
 
-def download_comments(comments, filename):
-    folder = 'comments/'
+def download_comments(comments, filename, dest_folder = './'):
+    folder = os.path.join(dest_folder, 'comments/')
     os.makedirs(folder, exist_ok=True)
     filename = sanitize_filename(filename)
     full_path = os.path.join(folder, filename)
@@ -55,7 +55,7 @@ def parse_book_page(response):
     title, author = title.strip(), author.strip()
     img_src = soup.select_one('.bookimage img')['src']
     book_path = urljoin('books/', f'{title}.txt')
-    book_comments = soup.select('.texts .black text')
+    book_comments = soup.select('.texts .black')
     book_comments_text = [comment.text for comment in book_comments]
     genres = soup.select('.ow_px_td span.d_book a')
     genres_text = [genre.text for genre in genres]
@@ -86,14 +86,41 @@ def create_parser(pages_count):
         '--start_page',
         default=1,
         type=int,
-        help='--start_page (default: 1)',
+        help='start page (default: first page)',
     )
     parser.add_argument(
         '--end_page',
-        nargs='?',
         default=pages_count,
         type=int,
-        help='--end_page (default: total_pages_count)',
+        help='end page (default: last page)',
+    )
+    parser.add_argument(
+        '-d',
+        '--dest_folder',
+        default='./',
+        type=str,
+        help='path to results of parsing (default: main folder "./")',
+    )
+    parser.add_argument(
+        '-i',
+        '--skip_imgs',
+        action='store_true',
+        default=False,
+        help='skip download book images. True or False (default: False)',
+    )
+    parser.add_argument(
+        '-t',
+        '--skip_txt',
+        action='store_true',
+        default=False,
+        help='skip download book txt. True or False (default: False)',
+    )
+    parser.add_argument(
+        '-j',
+        '--json_path',
+        default='./',
+        type=str,
+        help='path for json result of parsing (default: main folder "./")',
     )
     return parser
 
@@ -105,7 +132,6 @@ def main():
     parser = create_parser(pages_count)
     args = parser.parse_args()
 
-    os.makedirs('./books', exist_ok=True)
     books_jsons = []
     for page in range(args.start_page, args.end_page):
         url = f'https://tululu.org/l55/{page}/'
@@ -122,12 +148,13 @@ def main():
                 response = requests.get(book_url)
                 response.raise_for_status()
                 check_for_redirect(response)
-            except HTTPError as error:
-                print(f'HTTPError: book id={book_id} not found')
+            except HTTPError:
+                print(f"HTTPError: book id={book_id} image can't",
+                       "be downloaded")
                 continue
             except ConnectionError as error:
-                print(f"ConnectionError: can't connect to \
-                    the book id={book_id} page")
+                print(f"ConnectionError: can't connect to download",
+                       "the book id={book_id}")
                 time.sleep(5)
                 continue
 
@@ -136,36 +163,52 @@ def main():
             books_jsons.append(book_content)
 
             if book_content['comments']:
-                download_comments(book_content['comments'], book_filename)
-            
+                download_comments(
+                    book_content['comments'],
+                    book_filename,
+                    dest_folder=args.dest_folder
+                ) 
             book_img_src = book_content['img_src']
             book_image_url = urljoin(response.url, book_img_src)
             book_image_name = urlsplit(book_image_url).path.split('/')[-1]
-            try:
-                download_image(book_image_url, book_image_name)
-            except HTTPError:
-                print(f"HTTPError: book id={book_id} image can't \
-                    be downloaded")
-                continue
-            except ConnectionError as error:
-                print(f"ConnectionError: can't connect to \
-                    the book id={book_id} image url")
-                time.sleep(5)
-                continue
+            if not args.skip_imgs:
+                try:
+                    download_image(
+                        book_image_url,
+                        book_image_name,
+                        dest_folder=args.dest_folder
+                    )
+                except HTTPError:
+                    print(f"HTTPError: book id={book_id} image can't",
+                           "be downloaded")
+                    continue
+                except ConnectionError as error:
+                    print(f"ConnectionError: can't connect to download",
+                           "the book id={book_id}")
+                    time.sleep(5)
+                    continue
 
             book_download_url = 'http://tululu.org/txt.php'
-            try:
-                download_txt(book_download_url, payload, book_filename)
-            except HTTPError:
-                print(f"HTTPError: book id={book_id} can't be downloaded")
-                continue
-            except ConnectionError as error:
-                print(f"ConnectionError: can't connect to \
-                    download the book id={book_id}")
-                time.sleep(5)
-                continue
+            if not args.skip_txt:
+                try:
+                    download_txt(book_download_url,
+                                 payload,
+                                 book_filename,
+                                 dest_folder=args.dest_folder
+                    )
+                except HTTPError:
+                    print(f"HTTPError: book id={book_id} image can't",
+                           "be downloaded")
+                    continue
+                except ConnectionError as error:
+                    print(f"ConnectionError: can't connect to download",
+                           "the book id={book_id}")
+                    time.sleep(5)
+                    continue
     books_jsons = json.dumps(books_jsons, ensure_ascii=False)
-    with open('./books.json', 'w') as file:
+    os.makedirs(args.json_path, exist_ok=True)
+    json_fullpath = os.path.join(args.json_path, 'books.json')
+    with open(json_fullpath, 'w') as file:
         file.write(books_jsons)
 
 
