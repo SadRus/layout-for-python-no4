@@ -24,7 +24,7 @@ def download_txt(url, payload, filename, dest_folder = './'):
     filename = sanitize_filename(filename)
     full_path = os.path.join(folder, filename) 
     with open(full_path, 'wb') as file:
-        file.write(response.content)
+        file.write(response.text)
 
 
 def download_image(image_url, image_filename, dest_folder = './'):
@@ -64,7 +64,7 @@ def parse_book_page(response):
 def get_pages_count(url):
     response = requests.get(url)
     response.raise_for_status()
-    soup = BeautifulSoup(response.content, 'lxml')
+    soup = BeautifulSoup(response.text, 'lxml')
     pages = soup.select('.ow_px_td .center .npage')
     return int(pages[-1].text)
 
@@ -132,9 +132,9 @@ def main():
 
         books = soup.select('.ow_px_td table')
         for book in books:
-            book_id = book.select_one('a')['href'][2:-1]
+            book_id = book.select_one('a')['href']
             payload = {'id': book_id}
-            book_url = f'https://tululu.org/b{book_id}/'
+            book_url = urljoin(url, book_id)
             try:
                 response = requests.get(book_url)
                 response.raise_for_status()
@@ -173,10 +173,10 @@ def main():
                     time.sleep(5)
                     continue
 
-            book_download_url = 'http://tululu.org/txt.php'
+            book_download_txt_url = 'http://tululu.org/txt.php'
             if not args.skip_txt:
                 try:
-                    download_txt(book_download_url,
+                    download_txt(book_download_txt_url,
                                  payload,
                                  book_filename,
                                  dest_folder=args.dest_folder
