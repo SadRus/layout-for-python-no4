@@ -24,7 +24,7 @@ def download_txt(url, payload, filename, dest_folder = './'):
     filename = sanitize_filename(filename)
     full_path = os.path.join(folder, filename) 
     with open(full_path, 'wb') as file:
-        file.write(response.text)
+        file.write(response.content)
 
 
 def download_image(image_url, image_filename, dest_folder = './'):
@@ -132,15 +132,15 @@ def main():
 
         books = soup.select('.ow_px_td table')
         for book in books:
-            book_id = book.select_one('a')['href']
+            book_id = book.select_one('a')['href'][2:-1]
             payload = {'id': book_id}
-            book_url = urljoin(url, book_id)
+            book_url = f'https://tululu.org/b{book_id}/'
             try:
                 response = requests.get(book_url)
                 response.raise_for_status()
                 check_for_redirect(response)
             except HTTPError:
-                print(f"HTTPError: book id={book_id} image can't be downloaded")
+                print(f"HTTPError: book id={book_id} can't be downloaded")
                 continue
             except ConnectionError as error:
                 print(f"ConnectionError: can't connect to download",
@@ -180,7 +180,7 @@ def main():
                                  dest_folder=args.dest_folder
                     )
                 except HTTPError:
-                    print(f"HTTPError: book id={book_id} image can't be downloaded")
+                    print(f"HTTPError: book id={book_id} text can't be downloaded")
                     continue
                 except ConnectionError as error:
                     print(f"ConnectionError: can't connect to download",
