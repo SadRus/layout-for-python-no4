@@ -27,13 +27,14 @@
 * __-j / --json_path__ - путь к файлу books.json с результатами парсинга
 
 Примеры запуска скрипта:  
-`python parse_tululu_category.py --start_page 600` - скачаются все страницы, начиная с 600-й.
-`python parse_tululu_category.py --start_page 600 --end_page 601` - скачается только 600-я.
-`python parse_tululu_category.py --start_page 600 -it` - спарсятся все страницы, начиная с 600-й, при это картинки и содержание книг не будут скачиваться.
+`python parse_tululu_category.py --start_page 600` - скачаются все страницы, начиная с 600-й.  
+`python parse_tululu_category.py --start_page 600 --end_page 601` - скачается только 600-я.  
+`python parse_tululu_category.py --start_page 600 -it` - спарсятся все страницы, начиная с 600-й, без обложки и содержания.
+
 ## Результат работы скрипта
 В результате работы скрипта у вас появятся папки со скачанными книгами, обложками и файл с результатами парсинга.
 
-![image](https://user-images.githubusercontent.com/79669407/218302618-bac53fdf-e91b-49fd-8f8d-dadf8826ec5d.png)
+![image](https://user-images.githubusercontent.com/79669407/221358578-d4e357fb-4199-4711-a1cc-7a939f3bcb26.png)
 
 ## Цели проекта
 
