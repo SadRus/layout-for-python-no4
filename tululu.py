@@ -21,7 +21,6 @@ def download_txt(url, payload, filename):
     response = requests.get(url, params=payload)
     response.raise_for_status()
     check_for_redirect(response)
-
     filename = sanitize_filename(filename)
     full_path = os.path.join(folder, filename) 
     with open(full_path, 'wb') as file:
@@ -71,29 +70,44 @@ def parse_book_page(response):
     return book_content
 
 
-def main():
+def get_pages_count(url):
+    response = requests.get(url)
+    response.raise_for_status()
+    soup = BeautifulSoup(response.content, 'lxml')
+    pages = soup.select('.ow_px_td .center .npage')
+    return int(pages[-1].text)
+
+
+def create_parser(pages_count):
     parser = argparse.ArgumentParser(
-        description='Скачивание книг по начальному и конечному id'
+        description='Скачивание книг по начальной и конечной странице'
     )
     parser.add_argument(
-        'start_id',
-        nargs='?',
+        '--start_page',
         default=1,
         type=int,
-        help='start_id (default: 1)',
+        help='--start_page (default: 1)',
     )
     parser.add_argument(
-        'end_id',
+        '--end_page',
         nargs='?',
-        default=1,
+        default=pages_count,
         type=int,
-        help='end_id (default: 10)',
+        help='--end_page (default: total_pages_count)',
     )
+    return parser
+
+
+def main():
+    url = 'https://tululu.org/l55/'
+    pages_count = get_pages_count(url)
+
+    parser = create_parser(pages_count)
     args = parser.parse_args()
+
     os.makedirs('./books', exist_ok=True)
     books_jsons = []
-
-    for page in range(args.start_id, args.end_id + 1):
+    for page in range(args.start_page, args.end_page):
         url = f'https://tululu.org/l55/{page}/'
         response = requests.get(url)
         response.raise_for_status()
