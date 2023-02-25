@@ -77,20 +77,20 @@ def create_parser(pages_count):
         '--start_page',
         default=1,
         type=int,
-        help='start page (default: first page)',
+        help='start page (default: 1)',
     )
     parser.add_argument(
         '--end_page',
         default=pages_count,
         type=int,
-        help='end page (default: last page)',
+        help='end page (default: last page num)',
     )
     parser.add_argument(
         '-d',
         '--dest_folder',
         default='./',
         type=str,
-        help='path to results of parsing (default: main folder "./")',
+        help='path to results of parsing (default: "./")',
     )
     parser.add_argument(
         '-i',
@@ -111,7 +111,7 @@ def create_parser(pages_count):
         '--json_path',
         default='./',
         type=str,
-        help='path for json result of parsing (default: main folder "./")',
+        help='path for json result of parsing (default: "./")',
     )
     return parser
 
@@ -140,8 +140,7 @@ def main():
                 response.raise_for_status()
                 check_for_redirect(response)
             except HTTPError:
-                print(f"HTTPError: book id={book_id} image can't",
-                       "be downloaded")
+                print(f"HTTPError: book id={book_id} image can't be downloaded")
                 continue
             except ConnectionError as error:
                 print(f"ConnectionError: can't connect to download",
@@ -164,8 +163,7 @@ def main():
                         dest_folder=args.dest_folder
                     )
                 except HTTPError:
-                    print(f"HTTPError: book id={book_id} image can't",
-                           "be downloaded")
+                    print(f"HTTPError: book id={book_id} image can't be downloaded")
                     continue
                 except ConnectionError as error:
                     print(f"ConnectionError: can't connect to download",
@@ -182,8 +180,7 @@ def main():
                                  dest_folder=args.dest_folder
                     )
                 except HTTPError:
-                    print(f"HTTPError: book id={book_id} image can't",
-                           "be downloaded")
+                    print(f"HTTPError: book id={book_id} image can't be downloaded")
                     continue
                 except ConnectionError as error:
                     print(f"ConnectionError: can't connect to download",
