@@ -64,6 +64,7 @@ def parse_book_page(response):
 def get_pages_count(url):
     response = requests.get(url)
     response.raise_for_status()
+    check_for_redirect(response)
     soup = BeautifulSoup(response.text, 'lxml')
     pages = soup.select('.ow_px_td .center .npage')
     return int(pages[-1].text)
@@ -128,6 +129,7 @@ def main():
         url = f'https://tululu.org/l55/{page}/'
         response = requests.get(url)
         response.raise_for_status()
+        check_for_redirect(response)
         soup = BeautifulSoup(response.text, 'lxml')
 
         books = soup.select('.ow_px_td table')
