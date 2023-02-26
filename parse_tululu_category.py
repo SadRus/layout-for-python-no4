@@ -23,8 +23,8 @@ def download_txt(url, payload, filename, dest_folder = './'):
     check_for_redirect(response)
     filename = sanitize_filename(filename)
     full_path = os.path.join(folder, filename) 
-    with open(full_path, 'wb') as file:
-        file.write(response.content)
+    with open(full_path, 'w') as file:
+        file.write(response.text)
 
 
 def download_image(image_url, image_filename, dest_folder = './'):
