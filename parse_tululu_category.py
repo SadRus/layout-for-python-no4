@@ -123,7 +123,7 @@ def main():
     parser = create_parser(pages_count)
     args = parser.parse_args()
 
-    books_jsons = []
+    books_content = []
     for page in range(args.start_page, args.end_page):
         url = f'https://tululu.org/l55/{page}/'
         response = requests.get(url)
@@ -150,7 +150,7 @@ def main():
 
             book_content = parse_book_page(response)
             book_filename = f'{book_id}. {book_content["title"]}.txt'
-            books_jsons.append(book_content)
+            books_content.append(book_content)
 
             book_img_src = book_content['img_src']
             book_image_url = urljoin(response.url, book_img_src)
@@ -187,12 +187,10 @@ def main():
                            "the book id={book_id}")
                     time.sleep(5)
                     continue
-    books_jsons = json.dumps(books_jsons, ensure_ascii=False)
     os.makedirs(args.json_path, exist_ok=True)
-    json_fullpath = os.path.join(args.json_path, 'books.json')
+    json_fullpath = os.path.join(args.json_path, 'books_content.json')
     with open(json_fullpath, 'w') as file:
-        file.write(books_jsons)
-
+        json.dump(books_content, file, ensure_ascii=False)
 
 if __name__ == '__main__':
     main()
