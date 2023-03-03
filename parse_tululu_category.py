@@ -45,6 +45,8 @@ def parse_book_page(response):
     title, author = title_tag.text.split(' \xa0 :: \xa0 ')
     title, author = title.strip(), author.strip()
     img_src = soup.select_one('.bookimage img')['src']
+    img_name = urlsplit(img_src).path.split('/')[-1]
+    img_src = urljoin('images/', img_name)
     book_path = urljoin('books/', f'{title}.txt')
     book_comments = soup.select('.texts .black')
     book_comments_text = [comment.text for comment in book_comments]
@@ -78,12 +80,14 @@ def create_parser(pages_count):
         '--start_page',
         default=1,
         type=int,
+        metavar='',
         help='start page (default: 1)',
     )
     parser.add_argument(
         '--end_page',
         default=pages_count,
         type=int,
+        metavar='',
         help='end page (default: last page num)',
     )
     parser.add_argument(
@@ -91,6 +95,7 @@ def create_parser(pages_count):
         '--dest_folder',
         default='./',
         type=str,
+        metavar='',
         help='path to results of parsing (default: "./")',
     )
     parser.add_argument(
@@ -112,6 +117,7 @@ def create_parser(pages_count):
         '--json_path',
         default='./',
         type=str,
+        metavar='',
         help='path for json result of parsing (default: "./")',
     )
     return parser
