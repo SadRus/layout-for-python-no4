@@ -45,8 +45,6 @@ def parse_book_page(response):
     title, author = title_tag.text.split(' \xa0 :: \xa0 ')
     title, author = title.strip(), author.strip()
     img_src = soup.select_one('.bookimage img')['src']
-    img_name = urlsplit(img_src).path.split('/')[-1]
-    img_src = urljoin('images/', img_name)
     book_path = urljoin('books/', f'{title}.txt')
     book_comments = soup.select('.texts .black')
     book_comments_text = [comment.text for comment in book_comments]
