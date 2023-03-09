@@ -15,7 +15,7 @@ def check_for_redirect(response):
         raise requests.HTTPError()
 
 
-def download_txt(url, payload, filename, dest_folder = './'):
+def download_txt(url, payload, filename, dest_folder='./'):
     folder = os.path.join(dest_folder, 'books/')
     os.makedirs(folder, exist_ok=True)
     response = requests.get(url, params=payload)
@@ -27,14 +27,14 @@ def download_txt(url, payload, filename, dest_folder = './'):
         file.write(response.text)
 
 
-def download_image(image_url, image_filename, dest_folder = './'):
+def download_image(image_url, image_filename, dest_folder='./'):
     folder = os.path.join(dest_folder, 'images/')
     os.makedirs(folder, exist_ok=True)
     response = requests.get(image_url)
     response.raise_for_status()
 
     image_filename = sanitize_filename(image_filename)
-    full_path = os.path.join(folder, image_filename) 
+    full_path = os.path.join(folder, image_filename)
     with open(full_path, 'wb') as file:
         file.write(response.content)
 
@@ -45,7 +45,7 @@ def parse_book_page(response):
     title_tag = soup.select_one('h1')
     title, author = title_tag.text.split(' \xa0 :: \xa0 ')
     title, author = title.strip(), author.strip()
-    img_src = soup.select_one('.bookimage img')['src']
+    img_src = soup.select_one('.bookimage img')['src'].split('/')[-1]
     book_path = urljoin('books/', f'{book_id}. {sanitize_filename(title)}.txt')
     book_comments = soup.select('.texts .black')
     book_comments_text = [comment.text for comment in book_comments]
@@ -150,9 +150,9 @@ def main():
             except HTTPError:
                 print(f"HTTPError: book id={book_id} can't be downloaded")
                 continue
-            except ConnectionError as error:
-                print(f"ConnectionError: can't connect to download",
-                       "the book id={book_id}")
+            except ConnectionError:
+                print("ConnectionError: can't connect to download",
+                      f"the book id={book_id}")
                 time.sleep(5)
                 continue
 
@@ -160,7 +160,7 @@ def main():
             book_filename = f'{book_id}. {book_content["title"]}.txt'
             books_content.append(book_content)
 
-            book_img_src = book_content['img_src']
+            book_img_src = book.select_one('.bookimage img')['src']
             book_image_url = urljoin(response.url, book_img_src)
             book_image_name = urlsplit(book_image_url).path.split('/')[-1]
             if not args.skip_imgs:
@@ -173,9 +173,9 @@ def main():
                 except HTTPError:
                     print(f"HTTPError: book id={book_id} image can't be downloaded")
                     continue
-                except ConnectionError as error:
-                    print(f"ConnectionError: can't connect to download",
-                           "the book id={book_id}")
+                except ConnectionError:
+                    print("ConnectionError: can't connect to download",
+                          f"the book id={book_id}")
                     time.sleep(5)
                     continue
 
@@ -186,19 +186,20 @@ def main():
                                  payload,
                                  book_filename,
                                  dest_folder=args.dest_folder
-                    )
+                                 )
                 except HTTPError:
                     print(f"HTTPError: book id={book_id} text can't be downloaded")
                     continue
-                except ConnectionError as error:
-                    print(f"ConnectionError: can't connect to download",
-                           "the book id={book_id}")
+                except ConnectionError:
+                    print("ConnectionError: can't connect to download",
+                          f"the book id={book_id}")
                     time.sleep(5)
                     continue
     os.makedirs(args.json_path, exist_ok=True)
     json_fullpath = os.path.join(args.json_path, 'books_content.json')
     with open(json_fullpath, 'w') as file:
         json.dump(books_content, file, ensure_ascii=False)
+
 
 if __name__ == '__main__':
     main()
