@@ -22,7 +22,7 @@ def download_txt(url, payload, filename, dest_folder='./'):
     response.raise_for_status()
     check_for_redirect(response)
     filename = sanitize_filename(filename)
-    full_path = os.path.join(folder, filename) 
+    full_path = os.path.join(folder, filename)
     with open(full_path, 'w') as file:
         file.write(response.text)
 
@@ -158,7 +158,6 @@ def main():
 
             book_content = parse_book_page(response)
             book_filename = f'{book_id}. {book_content["title"]}.txt'
-            books_content.append(book_content)
 
             book_img_src = book.select_one('.bookimage img')['src']
             book_image_url = urljoin(response.url, book_img_src)
@@ -187,6 +186,7 @@ def main():
                                  book_filename,
                                  dest_folder=args.dest_folder
                                  )
+                    books_content.append(book_content)
                 except HTTPError:
                     print(f"HTTPError: book id={book_id} text can't be downloaded")
                     continue
