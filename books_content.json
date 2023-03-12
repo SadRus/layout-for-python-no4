@@ -102,7 +102,7 @@
         "book_id": "1987",
         "title": "Говорящий камень",
         "author": "Азимов Айзек",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/1987. Говорящий камень.txt",
         "comments": [
             "читала похожее произведение. \"Мешок\", автора не помню.",
@@ -156,7 +156,7 @@
         "book_id": "2531",
         "title": "Казнить нельзя помиловать",
         "author": "Чертанов Максим",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/2531. Казнить нельзя помиловать.txt",
         "comments": [
             "Стоит прочесть, несмотря на кое-гдешные замудрёносушности))"
@@ -241,7 +241,7 @@
         "book_id": "5648",
         "title": "Роковой поцелуй",
         "author": "Патрацкая Наталья",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/5648. Роковой поцелуй.txt",
         "comments": [],
         "genres": [
@@ -301,7 +301,7 @@
         "book_id": "8559",
         "title": "Justitia - est Часть 1",
         "author": "Картман Эрика",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/8559. Justitia - est Часть 1.txt",
         "comments": [],
         "genres": [
@@ -344,7 +344,7 @@
         "book_id": "9080",
         "title": "Будет скафандр - будут и путешествия",
         "author": "Хайнлайн Роберт",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/9080. Будет скафандр - будут и путешествия.txt",
         "comments": [
             "Хорошая добрая книга.",
@@ -430,7 +430,7 @@
         "book_id": "12795",
         "title": "Взгляд из сердца",
         "author": "Мейстер Максим",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/12795. Взгляд из сердца.txt",
         "comments": [],
         "genres": [
@@ -461,7 +461,7 @@
         "book_id": "16092",
         "title": "Сборник рассказов и повестей",
         "author": "ЛУКИНА Любовь",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/16092. Сборник рассказов и повестей.txt",
         "comments": [],
         "genres": [
@@ -503,7 +503,7 @@
         "book_id": "18920",
         "title": "...На Вавилон",
         "author": "Силверберг Роберт",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18920. ...На Вавилон.txt",
         "comments": [
             "Отличный рассказ.",
@@ -545,7 +545,7 @@
         "book_id": "18922",
         "title": "...к звездам!",
         "author": "Радутный Радий",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18922. ...к звездам!.txt",
         "comments": [
             "Спасибо за полученное удовольствие."
@@ -558,7 +558,7 @@
         "book_id": "18926",
         "title": "1-книга. Весна на Галане",
         "author": "Карр Алекс",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18926. 1-книга. Весна на Галане.txt",
         "comments": [
             "Если честно, то слишком растянуто и нудновато. А в общем, идея понравилась, можно почитать, разок.",
@@ -574,7 +574,7 @@
         "book_id": "18928",
         "title": "10-я книга. Варкенские перемены.",
         "author": "Карр Алекс",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18928. 10-я книга. Варкенские перемены.txt",
         "comments": [
             "Я ставлю 4."
@@ -587,7 +587,7 @@
         "book_id": "18929",
         "title": "11-я книга. Рождение империи сенсетивов",
         "author": "Карр Алекс",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18929. 11-я книга. Рождение империи сенсетивов.txt",
         "comments": [
             "Спасобо вам за это произведение!!!!!",
@@ -601,7 +601,7 @@
         "book_id": "18930",
         "title": "13-я книга. Галанское сватовство",
         "author": "Карр Алекс",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18930. 13-я книга. Галанское сватовство.txt",
         "comments": [],
         "genres": [
@@ -612,7 +612,7 @@
         "book_id": "18931",
         "title": "132-й",
         "author": "Макаров Андрей",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18931. 132-й.txt",
         "comments": [
             "Хороший рассказ. Так и хочется этому штабному офицеру смазать по мурсалам... Сытый, чистый, самодовольный. Хорошо, что были и есть такие, как тот несуразный полковник.",
@@ -629,7 +629,7 @@
         "book_id": "18932",
         "title": "14-я книга. Барабаны Таланов",
         "author": "Карр Алекс",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18932. 14-я книга. Барабаны Таланов.txt",
         "comments": [],
         "genres": [
@@ -640,7 +640,7 @@
         "book_id": "18933",
         "title": "15-я книга. Школа арханелов",
         "author": "Карр Алекс",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18933. 15-я книга. Школа арханелов.txt",
         "comments": [],
         "genres": [
@@ -651,7 +651,7 @@
         "book_id": "18935",
         "title": "2-я книга. Сенсетивы Галана",
         "author": "Карр Алекс",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18935. 2-я книга. Сенсетивы Галана.txt",
         "comments": [],
         "genres": [
@@ -662,7 +662,7 @@
         "book_id": "18936",
         "title": "4-я книга. Экспедиция на Голубой планетоид",
         "author": "Карр Алекс",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18936. 4-я книга. Экспедиция на Голубой планетоид.txt",
         "comments": [],
         "genres": [
@@ -673,7 +673,7 @@
         "book_id": "18937",
         "title": "5-я книга. В подземельях Бидрупа.",
         "author": "Карр Алекс",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18937. 5-я книга. В подземельях Бидрупа.txt",
         "comments": [],
         "genres": [
@@ -684,7 +684,7 @@
         "book_id": "18938",
         "title": "53-я американская мечта",
         "author": "Салли Джейли",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18938. 53-я американская мечта.txt",
         "comments": [
             "Полнейший бред по моему мнению.",
@@ -698,7 +698,7 @@
         "book_id": "18939",
         "title": "6-я книга. Сражение за Бидруп.",
         "author": "Карр Алекс",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18939. 6-я книга. Сражение за Бидруп.txt",
         "comments": [],
         "genres": [
@@ -709,7 +709,7 @@
         "book_id": "18940",
         "title": "64-клеточный дурдом",
         "author": "Лейбер Фриц",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18940. 64-клеточный дурдом.txt",
         "comments": [
             "Заставляет задуматься- человек против мной машины или наоборот. Понравится любителям шахматных игр- книга для вас."
@@ -722,7 +722,7 @@
         "book_id": "18941",
         "title": "7-я книга. День Откровения",
         "author": "Карр Алекс",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18941. 7-я книга. День Откровения.txt",
         "comments": [],
         "genres": [
@@ -733,7 +733,7 @@
         "book_id": "18942",
         "title": "8-я книга. Полет Уригленны.",
         "author": "Карр Алекс",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18942. 8-я книга. Полет Уригленны.txt",
         "comments": [],
         "genres": [
@@ -744,7 +744,7 @@
         "book_id": "18943",
         "title": "9-я книга. Тарат Зурбин",
         "author": "Карр Алекс",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18943. 9-я книга. Тарат Зурбин.txt",
         "comments": [],
         "genres": [
@@ -755,7 +755,7 @@
         "book_id": "18944",
         "title": "90х60х90",
         "author": "Берендеев Кирилл",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18944. 90х60х90.txt",
         "comments": [
             "Ни фантастики, ни фэнтези, обычный детектив... Про обычную жизненную ситуацию... Правда, пара диалогов заставили задуматься, но не более..."
@@ -768,7 +768,7 @@
         "book_id": "18945",
         "title": "995-й святой",
         "author": "Цветков Юрий",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18945. 995-й святой.txt",
         "comments": [],
         "genres": [
@@ -779,7 +779,7 @@
         "book_id": "18946",
         "title": "А, Критика!",
         "author": "Еськов Кирилл",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18946. А, Критика!.txt",
         "comments": [],
         "genres": [
@@ -808,7 +808,7 @@
         "book_id": "18952",
         "title": "А бог един",
         "author": "Амнуэль Песах",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18952. А бог един.txt",
         "comments": [],
         "genres": [
@@ -819,7 +819,7 @@
         "book_id": "18953",
         "title": "А была ли тайна",
         "author": "Купцов Василий",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18953. А была ли тайна.txt",
         "comments": [],
         "genres": [
@@ -830,7 +830,7 @@
         "book_id": "18954",
         "title": "А человек забудет",
         "author": "Трусов Сергей",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18954. А человек забудет.txt",
         "comments": [],
         "genres": [
@@ -841,7 +841,7 @@
         "book_id": "18955",
         "title": "А что будет",
         "author": "Браун Фредерик",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18955. А что будет.txt",
         "comments": [],
         "genres": [
@@ -869,7 +869,7 @@
         "book_id": "18958",
         "title": "А дом стоит себе спокойно (Вечный дом)",
         "author": "Ван Вогт Альфред",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18958. А дом стоит себе спокойно (Вечный дом).txt",
         "comments": [],
         "genres": [
@@ -880,7 +880,7 @@
         "book_id": "18959",
         "title": "А еще мы выгуливаем собак",
         "author": "Хайнлайн Роберт",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18959. А еще мы выгуливаем собак.txt",
         "comments": [
             "Легенький рассказик о фирме оказующей ну просто любые услуги.",
@@ -895,7 +895,7 @@
         "book_id": "18960",
         "title": "А где же Рошар",
         "author": "Глазков Юрий",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18960. А где же Рошар.txt",
         "comments": [],
         "genres": [
@@ -906,7 +906,7 @@
         "book_id": "18961",
         "title": "А и Е",
         "author": "Стульник Сергей",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18961. А и Е.txt",
         "comments": [],
         "genres": [
@@ -917,7 +917,7 @@
         "book_id": "18962",
         "title": "А я пойду дальше",
         "author": "Лейбер Фриц",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18962. А я пойду дальше.txt",
         "comments": [],
         "genres": [
@@ -928,7 +928,7 @@
         "book_id": "18963",
         "title": "А как же еще",
         "author": "Каттнер Генри",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18963. А как же еще.txt",
         "comments": [
             "Чудесный юмор )"
@@ -941,7 +941,7 @@
         "book_id": "18964",
         "title": "А мне до них",
         "author": "Корепанов Алексей",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18964. А мне до них.txt",
         "comments": [],
         "genres": [
@@ -952,7 +952,7 @@
         "book_id": "18965",
         "title": "А могла бы и быть",
         "author": "Григорьев Владимир",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18965. А могла бы и быть.txt",
         "comments": [],
         "genres": [
@@ -963,7 +963,7 @@
         "book_id": "18966",
         "title": "А моя мама - ведьма!",
         "author": "Тенн Уильям",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18966. А моя мама - ведьма!.txt",
         "comments": [
             "Весьма рекомендую. Магия глазами ребёнка, рассказ - троюродный брат шурина кума знакомой подруги от того фильма \"Лабиринт Фавна\"... В общем читаем."
@@ -976,7 +976,7 @@
         "book_id": "18967",
         "title": "А мы лезем в окно",
         "author": "Молзберг Барри",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18967. А мы лезем в окно.txt",
         "comments": [
             "По этому рассказу я поставил номер в институте культуры еще  в 1990 году. До сих пор его признают как шедевр студенческого мастерства. Пытались некоторые поставить по-своему, но когда им Евгений Вандалковский рассказывал как ЭТО было - делали реверанс и искали другой материал."
@@ -989,7 +989,7 @@
         "book_id": "18969",
         "title": "А она уходила",
         "author": "Дымов Феликс Яковлевич",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18969. А она уходила.txt",
         "comments": [],
         "genres": [
@@ -1000,7 +1000,7 @@
         "book_id": "18970",
         "title": "А поезд идет",
         "author": "Ашкинази Леонид",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18970. А поезд идет.txt",
         "comments": [],
         "genres": [
@@ -1011,7 +1011,7 @@
         "book_id": "18971",
         "title": "А роза упала на лапу Азора",
         "author": "Осинский Владимир",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18971. А роза упала на лапу Азора.txt",
         "comments": [],
         "genres": [
@@ -1022,7 +1022,7 @@
         "book_id": "18972",
         "title": "А вдруг они победят",
         "author": "Белен",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18972. А вдруг они победят.txt",
         "comments": [],
         "genres": [
@@ -1033,7 +1033,7 @@
         "book_id": "18973",
         "title": "А вдруг",
         "author": "Грешнов Михаил",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18973. А вдруг.txt",
         "comments": [],
         "genres": [
@@ -1044,7 +1044,7 @@
         "book_id": "18974",
         "title": "А все из-за любви",
         "author": "Гуларт Рон",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18974. А все из-за любви.txt",
         "comments": [
             "Очень точное название. Нельзя в любовных делах полагаться на других, нужно самому принимать решения. О цене ошибки, ее последствиях..."
@@ -1057,7 +1057,7 @@
         "book_id": "18977",
         "title": "А всходы будут не скоро",
         "author": "Чешко Федор",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18977. А всходы будут не скоро.txt",
         "comments": [],
         "genres": [
@@ -1068,7 +1068,7 @@
         "book_id": "18978",
         "title": "А вы не верили",
         "author": "Ягупова Светлана",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18978. А вы не верили.txt",
         "comments": [],
         "genres": [
@@ -1079,7 +1079,7 @@
         "book_id": "18979",
         "title": "А за тобой придет генерал",
         "author": "Воробьев Борис",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18979. А за тобой придет генерал.txt",
         "comments": [],
         "genres": [
@@ -1090,7 +1090,7 @@
         "book_id": "18980",
         "title": "А жизнь идёт",
         "author": "Бояндин Константин",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18980. А жизнь идёт.txt",
         "comments": [],
         "genres": [
@@ -1116,7 +1116,7 @@
         "book_id": "18982",
         "title": "Абадон",
         "author": "Купцов Василий",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18982. Абадон.txt",
         "comments": [],
         "genres": [
@@ -1127,7 +1127,7 @@
         "book_id": "18984",
         "title": "Абицелла",
         "author": "Попогребский П",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18984. Абицелла.txt",
         "comments": [],
         "genres": [
@@ -1138,7 +1138,7 @@
         "book_id": "18986",
         "title": "Абракадабра",
         "author": "Рассел Эрик Фрэнк",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18986. Абракадабра.txt",
         "comments": [
             "забавная история. Рекомендую)",
@@ -1200,7 +1200,7 @@
         "book_id": "18990",
         "title": "Абсолютная полиция",
         "author": "Лисин Валерий",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18990. Абсолютная полиция.txt",
         "comments": [],
         "genres": [
@@ -1211,7 +1211,7 @@
         "book_id": "18991",
         "title": "Абсолютная правда",
         "author": "Коростелев Дмитрий",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18991. Абсолютная правда.txt",
         "comments": [],
         "genres": [
@@ -1222,7 +1222,7 @@
         "book_id": "18992",
         "title": "Абсолютная пустота (предисловие)",
         "author": "Лем Станислав",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18992. Абсолютная пустота (предисловие).txt",
         "comments": [
             "А что писать, я ничего не нашла! Где это предесловие?"
@@ -1248,7 +1248,7 @@
         "book_id": "18994",
         "title": "Абсолютно невозможно",
         "author": "Силверберг Роберт",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18994. Абсолютно невозможно.txt",
         "comments": [],
         "genres": [
@@ -1259,7 +1259,7 @@
         "book_id": "18995",
         "title": "Абсолютное Оружие",
         "author": "Ершов Юрий",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18995. Абсолютное Оружие.txt",
         "comments": [],
         "genres": [
@@ -1270,7 +1270,7 @@
         "book_id": "18996",
         "title": "Абсолютное оружие Горгон",
         "author": "Щербаков Владимир",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18996. Абсолютное оружие Горгон.txt",
         "comments": [],
         "genres": [
@@ -1281,7 +1281,7 @@
         "book_id": "18999",
         "title": "Абсолютное счастье",
         "author": "Якименко Константин",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/18999. Абсолютное счастье.txt",
         "comments": [
             "Спасибо автору! Рассказ не для всех, но для тех кто пытается понять суть жизни. Вцелом интересно и необычно!",
@@ -1295,7 +1295,7 @@
         "book_id": "19000",
         "title": "Абсолютное время",
         "author": "Бялецкий Януш",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/19000. Абсолютное время.txt",
         "comments": [],
         "genres": [
@@ -1306,7 +1306,7 @@
         "book_id": "19001",
         "title": "Абсолютный хрум",
         "author": "Тарабанов Дмитрий",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/19001. Абсолютный хрум.txt",
         "comments": [],
         "genres": [
@@ -1317,7 +1317,7 @@
         "book_id": "19002",
         "title": "Абстиненция",
         "author": "Нестеренко Юрий",
-        "img_src": "nopic.gif",
+        "img_src": null,
         "book_path": "books/19002. Абстиненция.txt",
         "comments": [],
         "genres": [

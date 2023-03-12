@@ -46,6 +46,8 @@ def parse_book_page(response):
     title, author = title_tag.text.split(' \xa0 :: \xa0 ')
     title, author = title.strip(), author.strip()
     img_src = soup.select_one('.bookimage img')['src'].split('/')[-1]
+    if img_src == 'nopic.gif':
+        img_src = None
     book_path = urljoin('books/', f'{book_id}. {sanitize_filename(title)}.txt')
     book_comments = soup.select('.texts .black')
     book_comments_text = [comment.text for comment in book_comments]
