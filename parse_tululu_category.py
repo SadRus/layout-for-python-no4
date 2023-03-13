@@ -132,7 +132,7 @@ def main():
     parser = create_parser(pages_count)
     args = parser.parse_args()
 
-    books_content = []
+    book_descriptions = []
     for page in range(args.start_page, args.end_page):
         url = f'https://tululu.org/l55/{page}/'
         response = requests.get(url)
@@ -158,8 +158,8 @@ def main():
                 time.sleep(5)
                 continue
 
-            book_content = parse_book_page(response)
-            book_filename = f'{book_id}. {book_content["title"]}.txt'
+            book_description = parse_book_page(response)
+            book_filename = f'{book_id}. {book_description["title"]}.txt'
 
             book_img_src = book.select_one('.bookimage img')['src']
             book_image_url = urljoin(response.url, book_img_src)
@@ -188,7 +188,7 @@ def main():
                                  book_filename,
                                  dest_folder=args.dest_folder
                                  )
-                    books_content.append(book_content)
+                    book_descriptions.append(book_description)
                 except HTTPError:
                     print(f"HTTPError: book id={book_id} text can't be downloaded")
                     continue
@@ -198,9 +198,9 @@ def main():
                     time.sleep(5)
                     continue
     os.makedirs(args.json_path, exist_ok=True)
-    json_fullpath = os.path.join(args.json_path, 'books_content.json')
+    json_fullpath = os.path.join(args.json_path, 'book_descriptions.json')
     with open(json_fullpath, 'w') as file:
-        json.dump(books_content, file, ensure_ascii=False)
+        json.dump(book_descriptions, file, ensure_ascii=False)
 
 
 if __name__ == '__main__':
